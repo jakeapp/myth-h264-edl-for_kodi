@@ -8,3 +8,5 @@ credit to the following:
 https://gomezdevelopment.wordpress.com/2014/01/14/mythtv-x264-mp4-compression-scripts/
 
 http://blog.gorwits.me.uk/category/transcoding/index.html
+
+Kirtlander
