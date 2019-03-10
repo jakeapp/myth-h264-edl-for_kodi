@@ -253,7 +253,7 @@ do {
   $newfilename =~ s/\///g;
   $newfilename =~ s/\|//g;
   if ( $iter != "0" )
-  {  $newfilename = sprintf "%s_%d%s", $newfilename, $iter, ".mp4"  } else { $newfilename = sprintf "%s%s", $newfilename, ".ts" }
+  {  $newfilename = sprintf "%s_%d%s", $newfilename, $iter, ".mp4"  } else { $newfilename = sprintf "%s%s", $newfilename, ".mp4" }
   $iter ++;
   $secs = $secs + $iter;
   $newstarttime = sprintf "%04d-%02d-%02d %02d:%02d:%02d",
@@ -346,6 +346,18 @@ chop $command; chop $command;  # remove trailing comma quote
 
 $command .= ');';
 
+# Not sure about this:
+
+set @fps = (select data/1000
+from mythconverg.recordedmarkup
+where chanid=$chanid and starttime=$starttime and type=32);
+
+replace into mythconverg.recordedseek
+select chanid, starttime, mark, floor(mark*1000/@fps ) AS offset, 33 as type
+from mythconverg.recordedmarkup
+where chanid=$chanid and starttime=$starttime and (type=4 OR type=5 OR type=33) ORDER BY mark;
+
+# ================================
 if ( $DEBUG || $noexec )
 {   print "# $command\n"  }
 
