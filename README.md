@@ -1,5 +1,5 @@
 # myth-h264-edl-for_kodi
-user job scripts to transcode mpeg2 files to h264 and retain edl functionality in kodi.. neither removes content from the recording one works for content commflags.
+user job scripts to transcode mpeg2 files to h264 and retain edl functionality in kodi.. neither removes content from the recording one works better for content with commflags.
 
 They are working...
 
